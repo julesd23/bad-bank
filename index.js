@@ -7,8 +7,13 @@ function Spa() {
   const [users, setUsers] = React.useState([{name:'julius',email:'juliusdeangelis@gmail.com',password:'secret12',balance:100}, 
   {name:'peter',email:'peter@mit.edu',password:'secret11',balance:200}]);
   // const value = React.useMemo(() => ({user, setUser}), [user, setUser])
+  const [activity, setActivity] = React.useState(
+    [{user:'', type:'', amount:'', time:''}]
+  );
   const value = 
-  {user, setUser, users, setUsers}
+  {user, setUser, users, setUsers, activity, setActivity}
+
+
   return (
     <HashRouter>
       <UserContext.Provider value={value} user={user} >

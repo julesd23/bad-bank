@@ -1,6 +1,7 @@
 function Deposit(){
 
-  const {user, users, setUsers} = React.useContext(UserContext);
+  
+  const {user, users, setUsers, activity, setActivity} = React.useContext(UserContext);
   const userBalance = users.filter((curr) => {
 
     return curr.email === user.email;
@@ -28,22 +29,29 @@ function Deposit(){
 
   
   const handleChange = event => {
-    setDeposit(Number(event.target.value));
+    setDeposit(event.target.value);
 };
   
   const handleSubmit = () => {
-    let newTotal = balance + deposit;
-    if (deposit <= 0) { 
+    let newTotal = balance + Number(deposit);
+    if (isNaN(deposit)) {
+      setError("input must be a number!")
+      setTimeout(() => setError(''), 1500);
+    } else if (deposit <= 0) { 
         setError("Must Be positive number");
+        setTimeout(() => setError(''), 1500);
     } else {
         setBalance(newTotal);
-        // [ctx].users[1].balance.splice(newTotal);
-        setSuccess("seccess: we have received your deposit!")
-        alert("seccess: we have received your deposit!")
+        setSuccess(`Success: We have received your deposit of $${deposit}.`)
+        alert(`Success: We have received your deposit of $${deposit}.`)
+
+        setActivity([...activity, {user: user.email, type: "Deposit", amount: deposit, time: "current time" } ])
         setError(null);
-    }
-    event.preventDefault();
-};
+      }
+      event.preventDefault();
+      
+    };
+    console.log(user);
 
   return (
     <Card
@@ -56,9 +64,9 @@ function Deposit(){
             <h1>Deposit</h1>
             <h2 id="total">Your current balance is: {balance} </h2>
             {error && <div style={{color: 'red' }}>{error}</div>}
-            <input onChange={handleChange} type="number" width="200" placeholder="amount" ></input>
+            <input onChange={handleChange} type="text" width="200" placeholder="amount" ></input>
             {/* {error && <div style={{color: 'red' }}>{error}</div>} */}
-            <button className="button"  >Submit Deposit</button>
+            <button disabled={!deposit} className="button"  >Submit Deposit</button>
             {/* {success && <div id="createStatus">{success}</div>} */}
             <br></br>
         </form>
