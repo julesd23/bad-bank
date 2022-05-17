@@ -51,7 +51,7 @@ function Deposit(){
       event.preventDefault();
       
     };
-    console.log(user);
+    // console.log(user);
 
   return (
     <Card
@@ -61,12 +61,15 @@ function Deposit(){
       body={  
               <>
         <form className="form" onSubmit={handleSubmit}>
-            <h1>Deposit</h1>
+            <h1>Deposit Funds</h1>
             <h2 id="total">Your current balance is: {balance} </h2>
-            {error && <div style={{color: 'red' }}>{error}</div>}
-            <input onChange={handleChange} type="text" width="200" placeholder="amount" ></input>
+            <br></br>
+            <label htmlFor="amount">Amount: </label>
+            <input className="form-control" onChange={handleChange} type="text" width="200" placeholder="amount" ></input>
             {/* {error && <div style={{color: 'red' }}>{error}</div>} */}
-            <button disabled={!deposit} className="button"  >Submit Deposit</button>
+            <br></br>
+            {error && <><div style={{color: 'red' }}>{error}</div><br></br></>}
+            <button disabled={!deposit} className="button2"  >Submit Deposit</button>
             {/* {success && <div id="createStatus">{success}</div>} */}
             <br></br>
         </form>

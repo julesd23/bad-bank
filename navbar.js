@@ -21,7 +21,7 @@ function NavBar(){
       return <></>;
     }
   }, [user])
-  console.log(user);
+  // console.log(user);
   return(
     <>
     <nav className="navbar navbar-expand navbar-dark bg-dark">
@@ -55,6 +55,7 @@ function NavBar(){
         </ul>
       </div>
     </nav>
+    <br></br>
     </>
   );
 }

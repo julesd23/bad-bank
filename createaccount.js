@@ -44,23 +44,23 @@ function CreateAccount() {
 
   return (
     <Card
-      bgcolor="primary"
+      bgcolor="secondary"
       header="Create Account"
       status={status}
       body={show ? (
         <form onSubmit={handleCreate}>
-          Name<br />
+          <label htmlFor="name">Name:</label>
           <input type="input" className="form-control" id="name" placeholder="Enter name" value={name} onChange={e => setName(e.currentTarget.value)} /><br />
-          Email address<br />
+          <label htmlFor="email">Email Address:</label>
           <input type="input" className="form-control" id="email" placeholder="Enter email" value={email} onChange={e => setEmail(e.currentTarget.value)} /><br />
-          Password<br />
+          <label htmlFor="password">Password: </label>
           <input type="password" className="form-control" id="password" placeholder="Enter password" value={password} onChange={e => setPassword(e.currentTarget.value)} /><br />
-          <button disabled={!name && !email && !password} type="submit" className="btn btn-light" onClick={handleCreate}>Create Account</button>
+          <button disabled={!name && !email && !password} type="submit" className="button2" onClick={handleCreate}>Create Account</button>
         </form>
       ) : (
         <form>
           <h5>Success</h5>
-          <button type="submit" className="btn btn-light" onClick={clearForm}>Add another account</button>
+          <button type="submit" className="button2" onClick={clearForm}>Add another account</button>
         </form>
       )}
     />

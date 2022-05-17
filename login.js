@@ -38,25 +38,27 @@ function Login() {
 
 
 
-  return (<Card
+  return (
+  <Card
     bgcolor="secondary"
-    header="Login"
+    header="Login to your account."
     status={status}
     body={
 
       <form onSubmit={submitHandler}>
         <div className="form-inner">
           <h2>Login</h2>
+          <br></br>
           {/* {error} */}
           <div className="form-group">
             <label htmlFor="email">Email: </label>
-            <input type="email" name="email" id="email" onChange={e => setDetails({ ...details, email: e.target.value })} value={details.email} />
+            <input className="form-control" type="email" name="email" id="email" onChange={e => setDetails({ ...details, email: e.target.value })} value={details.email} />
           </div>
           <div className="form-group">
             <label htmlFor="password">Password: </label>
-            <input type="password" name="password" id="password" onChange={e => setDetails({ ...details, password: e.target.value })} value={details.password} />
+            <input className="form-control" type="password" name="password" id="password" onChange={e => setDetails({ ...details, password: e.target.value })} value={details.password} />
           </div>
-          <input type="submit" value="Login" />
+          <button className="button2" type="submit" value="Login" >Login</button>
         </div>
       </form>
     } />

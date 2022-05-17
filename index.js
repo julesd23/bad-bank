@@ -8,7 +8,7 @@ function Spa() {
   {name:'peter',email:'peter@mit.edu',password:'secret11',balance:200}]);
   // const value = React.useMemo(() => ({user, setUser}), [user, setUser])
   const [activity, setActivity] = React.useState(
-    [{user:'', type:'', amount:'', time:''}]
+    []
   );
   const value = 
   {user, setUser, users, setUsers, activity, setActivity}

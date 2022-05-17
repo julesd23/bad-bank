@@ -1,6 +1,6 @@
 function Withdraw(){
 
-  const {user, users, setUsers} = React.useContext(UserContext);
+  const {user, users, setUsers, activity, setActivity} = React.useContext(UserContext);
   const userBalance = users.filter((curr) => {
 
     return curr.email === user.email;
@@ -46,6 +46,7 @@ function Withdraw(){
         setBalance(newTotal);
         setSuccess(`Success! Here is your withdraw of $${withdraw}.`)
         alert(`Success! Here is your withdraw of $${withdraw}.`)
+        setActivity([...activity, {user: user.email, type: "Withdraw", amount: withdraw, time: "current time" } ])
         setError(null);
     }
     event.preventDefault();
@@ -54,17 +55,20 @@ function Withdraw(){
   return (
     <Card
       bgcolor="secondary"
-      header="withdraw"
+      header="Withdraw"
       status={status}
       body={  
               <>
         <form className="form" onSubmit={handleSubmit}>
-            <h1>Withdraw</h1>
+            <h1>Withdraw Funds</h1>
             <h2 id="total">Your current balance is: {balance} </h2>
             {error && <div style={{color: 'red' }}>{error}</div>}
-            <input onChange={handleChange} type="text" width="200" placeholder="amount" ></input>
+            <br></br>
+            <label htmlFor="input">Amount: </label>
+            <input className="form-control" onChange={handleChange} type="text" width="200" placeholder="amount" ></input>
             {/* {error && <div style={{color: 'red' }}>{error}</div>} */}
-            <button disabled={!withdraw} className="button"  >Submit withdraw</button>
+            <br></br>
+            <button disabled={!withdraw} className="button2"  >Withdraw</button>
             {/* {success && <div id="createStatus">{success}</div>} */}
             <br></br>
         </form>
