@@ -1,6 +1,5 @@
 function CreateAccount() {
 
-
   const [show, setShow] = React.useState(true);
   const [status, setStatus] = React.useState('');
   const [name, setName] = React.useState('');
@@ -39,8 +38,6 @@ function CreateAccount() {
     setPassword('');
     setShow(true);
   }
-
-
 
   return (
     <Card

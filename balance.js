@@ -15,9 +15,18 @@ function Balance() {
   }, [users])
 
   return (
-    <div>
-      <h1>Balance</h1>
-      <h1>{userBalance}</h1>
-    </div>
+    <Card
+      bgcolor="secondary"
+      header="Balance"
+      status={status}
+      body={
+        <>
+          <form className="form">
+            <h1>Available Funds</h1>
+            <h2 id="total">Your current balance is: ${userBalance} </h2>
+          </form>
+        </>
+      }
+    />
   )
 }

@@ -34,13 +34,13 @@ function Withdraw(){
   const handleSubmit = () => {
     let newTotal = balance - Number(withdraw);
     if (isNaN(withdraw)) {
-      setError("Input must be a number!");
+      setError("Input must be a number.");
       setTimeout(() => setError(''), 1500);
     } else if (withdraw > balance) {
-      setError("Insufficient funds!");
+      setError("Insufficient funds.");
       setTimeout(() => setError(''), 1500);
     } else if (withdraw <= 0) { 
-        setError("Must Be positive number");
+        setError("Must Be positive number.");
         setTimeout(() => setError(''), 1500);
     } else {
         setBalance(newTotal);
@@ -61,13 +61,13 @@ function Withdraw(){
               <>
         <form className="form" onSubmit={handleSubmit}>
             <h1>Withdraw Funds</h1>
-            <h2 id="total">Your current balance is: {balance} </h2>
-            {error && <div style={{color: 'red' }}>{error}</div>}
+            <h2 id="total">Your current balance is: ${balance} </h2>
             <br></br>
             <label htmlFor="input">Amount: </label>
             <input className="form-control" onChange={handleChange} type="text" width="200" placeholder="amount" ></input>
-            {/* {error && <div style={{color: 'red' }}>{error}</div>} */}
+
             <br></br>
+            {error && <><div style={{color: 'red' }}>{error}</div><br></br></>}
             <button disabled={!withdraw} className="button2"  >Withdraw</button>
             {/* {success && <div id="createStatus">{success}</div>} */}
             <br></br>
